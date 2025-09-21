@@ -3,14 +3,19 @@ package com.example.lab1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log // Import Log
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class HomeActivity : AppCompatActivity() {
+
+    private val TAG = "HomeActivity" // Define TAG
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        Log.d(TAG, "onCreate")
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewItems)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -33,5 +38,35 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
             finishAffinity()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "onRestart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy")
     }
 }
