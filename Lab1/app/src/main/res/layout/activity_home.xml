@@ -5,6 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
+    <!-- ConstraintLayout для организации элементов пользовательского интерфейса -->
+    <!-- android:layout_width="match_parent": Ширина макета будет занимать всю доступную ширину экрана -->
+    <!-- android:layout_height="match_parent": Высота макета будет занимать всю доступную высоту экрана -->
+    <!-- tools:context=".HomeActivity" - узаем эту страницу в  HomeActivity -->
+    <!--  -->
 
     <TextView
         android:id="@+id/textViewHomeTitle"
@@ -16,6 +21,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
+
+    <!-- TextView отвечает за отображения заголовка -->
+    <!-- android:id="@+id/textViewHomeTitle" - уник. идентификатор, что бы можно было обращатся -->
+    <!-- android:textSize="24sp": Размер текста установлен в 24 масштабируемых пикселя -->
+    <!-- app:layou... - привязка границ к родю элементу -->
+    <!--android:layout_marginTop="16dp" - внешний отступ-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewItems"
@@ -29,6 +40,10 @@
         android:layout_marginBottom="16dp"
         tools:listitem="@layout/item_car" />
 
+    <!-- <androidx.recyclerview.widget.RecyclerView - Отображение списка авто -->
+    <!-- android:layout... - поставлена в 0 значит будет определятся связями -->
+
+
     <Button
         android:id="@+id/buttonPreviousHome"
         android:layout_width="wrap_content"
@@ -40,5 +55,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp"/>
+
+    <!-- Кнопка -->
+    <!-- android:layout_width="wrap_content": Ширина кнопки будет равна ширине ее содержимого (текста) -->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

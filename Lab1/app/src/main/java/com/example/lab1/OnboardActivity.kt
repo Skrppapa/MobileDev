@@ -8,7 +8,7 @@ import android.widget.Button
 
 class OnboardActivity : AppCompatActivity() {
 
-    private val TAG = "OnboardActivity" // Define TAG
+    private val TAG = "OnboardActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

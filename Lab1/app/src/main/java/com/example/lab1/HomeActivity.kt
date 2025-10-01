@@ -8,17 +8,17 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() { // HomeActivity является экраном в нашем приложении
 
-    private val TAG = "HomeActivity" // Define TAG
+    private val TAG = "HomeActivity" // Используется в качестве метки для сообщений в Logcat, помогает фильтровать логи, относящиеся именно к этой Activity.
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+    override fun onCreate(savedInstanceState: Bundle?) { // Вызывается когда Activity создается впервые
+        super.onCreate(savedInstanceState) // Вызывает реализацию этого метода из родительского класса (AppCompatActivity). Обязательный вызов!
+        setContentView(R.layout.activity_home) // Ссылаемся на наш шаблон
         Log.d(TAG, "onCreate")
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewItems)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewItems) // Находим шаблон по ID
+        recyclerView.layoutManager = LinearLayoutManager(this) // LinearLayoutManager означает, что элементы списка будут располагаться друг под другом (вертикально по умолчанию)
 
         val carList = listOf(
             Car("Audi A7", "Седан, Быстрый, Немецкое качество", "$25,000", R.drawable.a7),
@@ -28,10 +28,10 @@ class HomeActivity : AppCompatActivity() {
             Car("Toyota LC", "Японская надежность, Проверен временем, Высокая безоспасность", "$55,000", R.drawable.lc)
         )
 
-        val adapter = CarAdapter(carList)
+        val adapter = CarAdapter(carList) // Создает экземпляр CarAdapter, передавая ему список carList.
         recyclerView.adapter = adapter
 
-        val previousButton = findViewById<Button>(R.id.buttonPreviousHome)
+        val previousButton = findViewById<Button>(R.id.buttonPreviousHome) // Находит кнопку по ID и подписывается на нее отслеживать нажатие
         previousButton.setOnClickListener {
             val intent = Intent(this, OnboardActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

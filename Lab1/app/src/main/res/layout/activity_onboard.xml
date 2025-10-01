@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".OnboardActivity">
 
+    <!-- Стартовый экран приложения -->
+
     <ImageView
         android:id="@+id/imageViewCar"
         android:layout_width="0dp"

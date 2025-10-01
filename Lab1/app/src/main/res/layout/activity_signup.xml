@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
 
+    <!-- Экран регистрации -->
+
     <TextView
         android:id="@+id/textViewSignUpTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="Регистрация"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +23,7 @@
         android:id="@+id/textFieldName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Name/Login"
+        android:hint="Имя/Логин"
         app:layout_constraintTop_toBottomOf="@id/textViewSignUpTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +61,7 @@
         android:id="@+id/textFieldPasswordSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Пароль"
         app:passwordToggleEnabled="true"
         app:layout_constraintTop_toBottomOf="@id/textFieldEmailSignUp"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +81,7 @@
         android:id="@+id/buttonSignUpCreate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Create Account"
+        android:text="Создать аккаунт"
         app:layout_constraintTop_toBottomOf="@id/textFieldPasswordSignUp" 
         app:layout_constraintStart_toStartOf="@id/textFieldPasswordSignUp"
         app:layout_constraintEnd_toEndOf="@id/textFieldPasswordSignUp"
@@ -90,7 +92,7 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Already have an account? Sign In"
+        android:text="Уже есть аккаунт? Войти"
         app:layout_constraintTop_toBottomOf="@id/buttonSignUpCreate"
         app:layout_constraintStart_toStartOf="@id/buttonSignUpCreate"
         app:layout_constraintEnd_toEndOf="@id/buttonSignUpCreate"
@@ -101,7 +103,7 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Previous"
+        android:text="Назад"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="16dp"/>

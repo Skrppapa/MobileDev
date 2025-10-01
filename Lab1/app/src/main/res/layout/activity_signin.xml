@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".SignInActivity">
 
+    <!-- Экран входа -->
+
     <ImageView
         android:id="@+id/imageViewSignInBackground"
         android:layout_width="0dp"
@@ -56,6 +58,9 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:textColor="@android:color/black"/>
+
+        <!-- <com.google.android.material.textfield.TextInputEditText - Определяют оформление строк ввода логина и пароля -->
+        <!-- android:inputType="textEmailAddress": Указывает тип вводимых данных, также может использоваться для базовой валидации. -->
 
     </com.google.android.material.textfield.TextInputLayout>
 

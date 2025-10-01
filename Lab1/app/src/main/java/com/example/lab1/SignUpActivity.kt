@@ -1,5 +1,6 @@
 package com.example.lab1
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,10 @@ import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputLayout // Добавлен импорт
 import com.google.android.material.textfield.TextInputEditText
+
+const val EXTRA_USER_NAME = "com.example.lab1.USER_NAME"
+const val EXTRA_USER_EMAIL = "com.example.lab1.USER_EMAIL"
+const val EXTRA_USER_OBJECT = "com.example.lab1.USER_OBJECT"
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -27,18 +32,14 @@ class SignUpActivity : AppCompatActivity() {
         val passwordInputLayout = findViewById<TextInputLayout>(R.id.textFieldPasswordSignUp)
         val passwordEditText = passwordInputLayout.editText
 
-        // val ageInputLayout = findViewById<TextInputLayout>(R.id.textFieldAge) // Пример для опционального поля
-
         val signUpButton = findViewById<Button>(R.id.buttonSignUpCreate)
-        val goToSignInButton = findViewById<Button>(R.id.buttonGoToSignIn)
+        val goToSignInButton = findViewById<Button>(R.id.buttonGoToSignIn) // Эта кнопка будет закрывать текущую Activity
         val previousButton = findViewById<Button>(R.id.buttonPreviousSignUp)
 
         signUpButton.setOnClickListener {
             val name = nameEditText?.text.toString()
             val email = emailEditText?.text.toString()
             val password = passwordEditText?.text.toString()
-
-            // val age = ageEditText?.text.toString() // Пример для опционального поля
 
             if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
                 if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -57,12 +58,20 @@ class SignUpActivity : AppCompatActivity() {
                     passwordEditText?.error = null
                 }
 
-                Toast.makeText(this, "Необходимо зарегистрироваться для получения $name", Toast.LENGTH_SHORT).show()
+                // Создаем User объект
+                val user = User(name, email, password)
 
-                val intent = Intent(this, HomeActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-                finishAffinity()
+                // Создаем Intent для возврата данных
+                val resultIntent = Intent()
+                // Передача данных с использованием стандартного типа (String)
+                resultIntent.putExtra(EXTRA_USER_NAME, name)
+                resultIntent.putExtra(EXTRA_USER_EMAIL, email)
+                // Передача объекта User (Serializable)
+                resultIntent.putExtra(EXTRA_USER_OBJECT, user)
+
+                setResult(Activity.RESULT_OK, resultIntent)
+                Toast.makeText(this, "Регистрация успешна для $name", Toast.LENGTH_SHORT).show()
+                finish() // Закрываем SignUpActivity и возвращаемся к SignInActivity
 
             } else {
                 if (name.isEmpty()) {
@@ -79,7 +88,8 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         goToSignInButton.setOnClickListener {
-            startActivity(Intent(this, SignInActivity::class.java))
+            // Просто закрываем SignUpActivity, т.к. SignInActivity уже в стеке
+            finish()
         }
 
         previousButton.setOnClickListener {
