@@ -18,6 +18,7 @@ class SignInActivity : AppCompatActivity() {
     private val TAG = "SignInActivity" // Define TAG
     private lateinit var emailEditText: TextInputEditText
     private lateinit var passwordEditText: TextInputEditText
+    private var registeredUser: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,18 +40,22 @@ class SignInActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                var signedIn = false
-                // Логика входа, в данном случае, если пришли данные с SignUpActivity, можно их использовать
-                // Но для примера оставим существующую логику, но можно добавить проверку зарегистрированного пользователя
-                if (email == "test@example.com" && password == "password") {
+                val signedIn: Boolean
+            
+                // Сначала проверяем зарегистрированного пользователя
+                if (registeredUser != null && email == registeredUser?.email && password == registeredUser?.password) {
+                    signedIn = true
+                    Toast.makeText(this, "Вход выполнен успешно для ${registeredUser?.name}", Toast.LENGTH_SHORT).show()
+                }
+                // Затем проверяем предустановленного пользователя
+                else if (email == "test@example.com" && password == "password") {
                     signedIn = true
                     Toast.makeText(this, "Успешная авторизация (предустановленный)", Toast.LENGTH_SHORT).show()
-                } else if (email.contains("@") && email.length > 5 && password.length >= 6) {
-                    signedIn = true
-                    // Здесь можно было бы проверить, что email и password совпадают с полученными из SignUpActivity
-                    Toast.makeText(this, "Вход выполнен успешно (общая проверка)", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Неверный формат email или пароля", Toast.LENGTH_SHORT).show()
+                }
+                // Если ни один не подошел
+                else {
+                    signedIn = false
+                    Toast.makeText(this, "Неверный email или пароль", Toast.LENGTH_SHORT).show()
                 }
 
                 if (signedIn) {
@@ -100,6 +105,7 @@ class SignInActivity : AppCompatActivity() {
                 }
 
                 user?.let {
+                    registeredUser = it
                     Toast.makeText(this, "Регистрация (Объект User): Имя: ${it.name}, Email: ${it.email}, Пароль: ${it.password}", Toast.LENGTH_LONG).show()
                     // Можно дополнительно предзаполнить поля, если еще не сделано
                     // emailEditText.setText(it.email)
