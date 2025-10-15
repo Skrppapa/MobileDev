@@ -3,7 +3,7 @@ package com.example.lab1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log // Import Log
+import android.util.Log
 import android.widget.Button
 
 class OnboardActivity : AppCompatActivity() {

@@ -4,10 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log // Import Log
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
-import com.google.android.material.textfield.TextInputLayout // Добавлен импорт
+import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textfield.TextInputEditText
 
 const val EXTRA_USER_NAME = "com.example.lab1.USER_NAME"
@@ -16,7 +16,7 @@ const val EXTRA_USER_OBJECT = "com.example.lab1.USER_OBJECT"
 
 class SignUpActivity : AppCompatActivity() {
 
-    private val TAG = "SignUpActivity" // Define TAG
+    private val TAG = "SignUpActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class SignUpActivity : AppCompatActivity() {
         val passwordEditText = passwordInputLayout.editText
 
         val signUpButton = findViewById<Button>(R.id.buttonSignUpCreate)
-        val goToSignInButton = findViewById<Button>(R.id.buttonGoToSignIn) // Эта кнопка будет закрывать текущую Activity
+        val goToSignInButton = findViewById<Button>(R.id.buttonGoToSignIn)
         val previousButton = findViewById<Button>(R.id.buttonPreviousSignUp)
 
         signUpButton.setOnClickListener {
@@ -57,21 +57,19 @@ class SignUpActivity : AppCompatActivity() {
                 } else {
                     passwordEditText?.error = null
                 }
-
-                // Создаем User объект
                 val user = User(name, email, password)
 
-                // Создаем Intent для возврата данных
+                // для возврата данных
                 val resultIntent = Intent()
-                // Передача данных с использованием стандартного типа (String)
+                // Передача данных с использованием стринга
                 resultIntent.putExtra(EXTRA_USER_NAME, name)
                 resultIntent.putExtra(EXTRA_USER_EMAIL, email)
-                // Передача объекта User (Serializable)
+                // Передача объекта User
                 resultIntent.putExtra(EXTRA_USER_OBJECT, user)
 
                 setResult(Activity.RESULT_OK, resultIntent)
                 Toast.makeText(this, "Регистрация успешна для $name", Toast.LENGTH_SHORT).show()
-                finish() // Закрываем SignUpActivity и возвращаемся к SignInActivity
+                finish()
 
             } else {
                 if (name.isEmpty()) {
@@ -88,7 +86,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         goToSignInButton.setOnClickListener {
-            // Просто закрываем SignUpActivity, т.к. SignInActivity уже в стеке
+
             finish()
         }
 

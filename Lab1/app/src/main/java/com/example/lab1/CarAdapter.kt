@@ -18,19 +18,19 @@ class CarAdapter(private val carList: List<Car>) : RecyclerView.Adapter<CarAdapt
         return CarViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: CarViewHolder, position: Int) { // Метод для для отображения в указанной позиции
-        val currentItem = carList[position] // Получает объект Car из списка carList для текущей позиции.
-        holder.carName.text = currentItem.name // Устанавливает текст названия авто
-        holder.carDescription.text = currentItem.description // Текст с описанием авто
-        holder.carPrice.text = currentItem.price // Текст с цены авто
-        currentItem.imageResId?.let { // Обработка изображения
+    override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
+        val currentItem = carList[position]
+        holder.carName.text = currentItem.name
+        holder.carDescription.text = currentItem.description
+        holder.carPrice.text = currentItem.price
+        currentItem.imageResId?.let {
             holder.carImage.setImageResource(it)
         } ?: run {
             holder.carImage.setImageResource(R.drawable.ic_launcher_foreground) // Если изображение не завезли - используется заглушка
         }
     }
 
-    override fun getItemCount() = carList.size // Возвр. общее количество элементов в наборе данных
+    override fun getItemCount() = carList.size
 
     class CarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {  // Внутренний класс, наследуется от RecyclerView.ViewHolder
         val carImage: ImageView = itemView.findViewById(R.id.imageViewCarItem) // ViewHolder описывает представление элемента и метаданные о его месте в RecyclerView
