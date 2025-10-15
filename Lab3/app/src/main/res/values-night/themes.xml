@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Lab1" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <item name="colorPrimary">@color/app_background_dark_blue</item>
+        <item name="colorOnPrimary">@color/text_on_dark_background</item>
+        
+        <item name="colorSecondary">@color/button_light_green</item>
+        <item name="colorOnSecondary">@color/text_on_light_green_button</item>
+
+        <!-- Default background color for activities -->
+        <item name="android:colorBackground">@color/app_background_dark_blue</item>
+        <item name="colorOnBackground">@color/text_on_dark_background</item> <!-- Text color on dark blue background -->
+
+        <!-- Surface colors (e.g. for Cards, Menus) -->
+        <item name="colorSurface">@color/app_background_dark_blue</item> <!-- Or a slightly lighter dark shade -->
+        <item name="colorOnSurface">@color/text_on_dark_background</item>
+
+        <!-- Error colors -->
+        <item name="colorError">#CF6679</item> <!-- Standard Material dark error -->
+        <item name="colorOnError">@color/black</item>
+    </style>
+
+    <!-- Если вы не определили <style name="Theme.Lab1" parent="Base.Theme.Lab1" /> в этом файле,
+         то его можно не добавлять, так как он наследуется из values/themes.xml 
+         Однако, если вы хотите переопределить Theme.Lab1 специально для ночного режима,
+         вы бы определили его здесь. Для простоты сейчас оставим так. -->
+</resources>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignInActivity">
+
+    <!-- Экран входа -->
+
+    <ImageView
+        android:id="@+id/imageViewSignInBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/img_activity_signin"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="Фоновое изображение страницы входа"/>
+
+    <TextView
+        android:id="@+id/textViewSignInTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Введите данные для входа"
+        android:textSize="24sp"
+        android:textColor="@color/text_on_dark_background"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1.5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textColorHint="@android:color/black"
+        app:boxStrokeColor="@color/text_on_dark_background"
+        app:hintTextColor="@android:color/black"
+        app:boxBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/textViewSignInTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textColor="@android:color/black"/>
+
+        <!-- <com.google.android.material.textfield.TextInputEditText - Определяют оформление строк ввода логина и пароля -->
+        <!-- android:inputType="textEmailAddress": Указывает тип вводимых данных, также может использоваться для базовой валидации. -->
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textColorHint="@android:color/black"
+        app:boxStrokeColor="@color/text_on_dark_background"
+        app:hintTextColor="@android:color/black"
+        app:boxBackgroundColor="@android:color/white"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/text_on_dark_background"
+        app:layout_constraintTop_toBottomOf="@id/textFieldEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="@android:color/black"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonSignIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Войти"
+        android:backgroundTint="@color/app_background_dark_blue"
+        android:textColor="@color/text_on_dark_background"
+        app:layout_constraintTop_toBottomOf="@id/textFieldPassword"
+        app:layout_constraintStart_toStartOf="@id/textFieldPassword"
+        app:layout_constraintEnd_toEndOf="@id/textFieldPassword"
+        android:layout_marginTop="24dp"/>
+
+    <Button
+        android:id="@+id/buttonGoToSignUp"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Нет аккаунта? Регистрируйся"
+        android:textColor="@color/text_on_dark_background"
+        app:strokeColor="@color/text_on_dark_background"
+        app:layout_constraintTop_toBottomOf="@id/buttonSignIn"
+        app:layout_constraintStart_toStartOf="@id/buttonSignIn"
+        app:layout_constraintEnd_toEndOf="@id/buttonSignIn"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/buttonPrevious"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Назад"
+        android:textColor="@color/text_on_dark_background"
+        app:strokeColor="@color/text_on_dark_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
